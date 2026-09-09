@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head(${titulo})"></head>
+<body>
+    <nav th:replace="fragments/navbar :: navbar('artigos')"></nav>
+     <main class="container py-4" data-page="artigos-scan">
+        <section class="app-hero mb-4">
+            <div>
+                <span class="badge text-bg-light mb-3">Leitura por câmara</span>
+                <h1 class="display-6 mb-2">Identificar artigo por QR</h1>
+                <p class="text-secondary mb-0">
+                    Aponte a câmara para o QR Code do artigo.
+                </p>
+            </div>
+            <a class="btn btn-outline-light btn-lg" th:href="@{/artigos}">Voltar à lista</a>
+        </section>
+        <div id="feedback" class="mb-3"></div>
+        <div class="row g-4">
+            <div class="col-lg-7">
+                <section class="card shadow-sm border-0 h-100">
+                    <div class="card-body p-4">
+                        <h2 class="h4 mb-3">Scanner</h2>
+                        <div id="qr-reader" class="scanner-surface"></div>
+                        <p class="text-secondary small mt-3 mb-0">
+                            Se a câmara não ligar, verifique se está a usar <strong>HTTPS</strong> ou <strong>localhost</strong>.
+                        </p>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-5">
+                <section class="card shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h2 class="h4 mb-3">Pesquisa manual</h2>
+                        <form id="manualQrFormArtigo" class="d-grid gap-3">
+                            <div>
+                                <label class="form-label">Código do Artigo</label>
+                                <input type="text" id="manualQrValue" class="form-control" placeholder="Cole o código aqui">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Abrir Artigo</button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js"></script>
+    <div th:replace="fragments/scripts :: scripts(${pageScript})"></div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- Indica ao browser que este documento usa HTML5 -->
+
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- Elemento raiz da página.
+     O atributo xmlns:th declara o namespace do Thymeleaf,
+     para poderes usar atributos como th:text e th:each -->
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+
+
+    <title th:text="${titulo}">Index</title>
+    <!-- Se existir a variável "titulo" enviada pelo controller,
+         Se não existir, aparece "Index". -->
+
+    
+</head>
+
+<body>
+
+    <h1 th:text="${titulo}"></h1>
+    <!-- Mostra o valor da variável "titulo" enviada pelo controller.
+         model.addAttribute("titulo", "Página Principal nº2"); -->
+
+
+
+
+
+    <h2>Lista de Fornecedores</h2>
+    <table>
+        <!-- Tabela onde vão ser mostrados os Utilizadoress -->
+        <thead>
+            <!-- Cabeçalho da tabela -->
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Morada</th>
+                <th>Localidade</th>
+                <th>Email</th>
+                <th>Telemovel</th>
+                <th>Site</th>
+            </tr>
+        </thead>
+
+       
+        <tbody>
+            <!-- Corpo da tabela -->
+            <tr th:each="fornecedor : ${fornecedores}">
+
+                <td th:text="${fornecedor.id}"></td>
+                <td th:text="${fornecedor.nome}"></td>
+                <td th:text="${fornecedor.morada}"></td>
+                <td th:text="${fornecedor.localidade}"></td>
+                <td th:text="${fornecedor.email}"></td>
+                <td th:text="${fornecedor.telemovel}"></td>
+                <td th:text="${fornecedor.site}"></td>
+           
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

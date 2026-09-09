@@ -1,0 +1,327 @@
+:root {
+    --app-ink: #16324f;
+    --app-accent: #0f766e;
+    --app-accent-soft: #d9f3ef;
+    --app-sand: #f7f3eb;
+    --app-line: #d9e2ec;
+}
+
+body {
+    background:
+        radial-gradient(circle at top left, rgba(15, 118, 110, 0.14), transparent 30%),
+        linear-gradient(180deg, #f8fbfd 0%, var(--app-sand) 100%);
+    color: #1f2933;
+}
+
+.app-navbar {
+    background: linear-gradient(135deg, var(--app-ink), #214d72);
+    box-shadow: 0 10px 30px rgba(22, 50, 79, 0.18);
+}
+
+.app-hero {
+    background: linear-gradient(135deg, var(--app-ink), var(--app-accent));
+    color: #fff;
+    border-radius: 1.25rem;
+    padding: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.app-hero-copy {
+    max-width: 44rem;
+}
+
+.app-hero-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.app-hero code {
+    color: #d1fae5;
+}
+
+.card {
+    border-radius: 1.25rem;
+}
+
+.equipamento-thumb {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 0.9rem;
+    border: 1px solid var(--app-line);
+}
+
+.equipamento-thumb-lg {
+    width: 72px;
+    height: 72px;
+}
+
+.equipamento-thumb-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eef4f7;
+    color: #7b8794;
+    font-size: 0.72rem;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.equipamento-preview,
+.equipamento-detail-image {
+    width: 100%;
+    max-height: 320px;
+    object-fit: cover;
+    border-radius: 1rem;
+    border: 1px solid var(--app-line);
+}
+
+.equipamento-preview.d-none {
+    display: none;
+}
+
+.qr-wrapper {
+    min-height: 252px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #ffffff, #f4f7fb);
+    border: 1px dashed var(--app-line);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.qr-code-label {
+    display: inline-block;
+    padding: 0.5rem 0.75rem;
+    border-radius: 999px;
+    background: var(--app-accent-soft);
+    color: var(--app-ink);
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.92rem;
+}
+
+.scanner-surface {
+    min-height: 320px;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px dashed var(--app-line);
+    background: #fff;
+}
+
+.equipamento-mobile-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.equipamento-mobile-card {
+    border: 1px solid var(--app-line);
+    border-radius: 1.1rem;
+    background: rgba(255, 255, 255, 0.92);
+    padding: 1rem;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.equipamento-mobile-header {
+    display: flex;
+    gap: 0.9rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.equipamento-mobile-title {
+    min-width: 0;
+}
+
+.equipamento-mobile-title h3,
+.equipamento-mobile-title p {
+    overflow-wrap: anywhere;
+}
+
+.equipamento-mobile-meta {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem 1rem;
+}
+
+.equipamento-mobile-meta dt {
+    margin-bottom: 0.2rem;
+    color: #7b8794;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.equipamento-mobile-meta dd {
+    margin: 0;
+    font-weight: 600;
+}
+
+.equipamento-mobile-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+}
+
+.equipamento-mobile-actions .btn {
+    width: 100%;
+}
+
+.form-section-divider {
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--app-line);
+}
+
+.form-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.table thead th {
+    border-bottom: 0;
+    color: #52606d;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.form-control,
+.form-check-input {
+    border-color: var(--app-line);
+}
+
+.form-control:focus,
+.form-check-input:focus {
+    border-color: var(--app-accent);
+    box-shadow: 0 0 0 0.25rem rgba(15, 118, 110, 0.18);
+}
+
+.btn-primary {
+    background-color: var(--app-accent);
+    border-color: var(--app-accent);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #0b5f59;
+    border-color: #0b5f59;
+}
+
+@media (max-width: 767.98px) {
+    .container.py-4 {
+        padding-top: 1rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+
+    .app-hero {
+        padding: 1.25rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .app-hero .display-6 {
+        font-size: 1.55rem;
+    }
+
+    .app-hero-actions {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .app-hero-actions .btn {
+        width: 100%;
+    }
+
+    .card-header {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    .card-body.p-4,
+    .card-body.p-lg-5 {
+        padding: 1rem !important;
+    }
+
+    .equipamento-mobile-meta {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .app-hero {
+        align-items: flex-start;
+    }
+
+    .app-hero-actions .btn {
+        min-width: 11rem;
+    }
+}
+
+@media print {
+    .app-navbar,
+    .app-hero-actions,
+    .text-secondary.small,
+    .card:last-child {
+        display: none !important;
+    }
+
+    body {
+        background: #fff;
+    }
+
+    .container.py-4 {
+        max-width: none;
+        padding: 0 !important;
+    }
+
+    .app-hero,
+    .card {
+        box-shadow: none !important;
+        border: 0 !important;
+        background: #fff !important;
+        color: #000 !important;
+    }
+
+    .app-hero {
+        padding: 0 0 1rem 0;
+    }
+
+    .app-hero code {
+        color: #000;
+    }
+
+    .row.g-4 {
+        display: block;
+    }
+
+    .col-lg-7,
+    .col-lg-5 {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .qr-wrapper {
+        border: 1px solid #ccc;
+        min-height: auto;
+        page-break-inside: avoid;
+    }
+}

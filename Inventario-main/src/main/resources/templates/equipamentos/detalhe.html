@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head(${titulo})"></head>
+<body>
+    <nav th:replace="fragments/navbar :: navbar('equipamentos')"></nav>
+
+    <main class="container py-4" data-page="equipamentos-detalhe">
+        <section class="app-hero mb-4">
+            <div class="app-hero-copy">
+                <span class="badge text-bg-light mb-3">Ficha + QR</span>
+                <h1 class="display-6 mb-2" th:text="${equipamento.modelo}">Equipamento</h1>
+                <p class="text-secondary mb-0">
+                    O QR code guarda apenas o codigo unico. Num telemovel, abre
+                    <code>/equipamentos/scan</code> e aponta a camara ao codigo impresso.
+                </p>
+            </div>
+            <div class="app-hero-actions">
+                <button type="button" class="btn btn-outline-light btn-lg" onclick="window.print()">Imprimir QR</button>
+                <a class="btn btn-outline-light btn-lg" th:href="@{/equipamentos/scan}">Ler QR</a>
+                <a class="btn btn-primary btn-lg" th:href="@{/equipamentos/{id}/editar(id=${equipamento.id})}">Editar</a>
+            </div>
+        </section>
+
+        <div class="row g-4">
+            <div class="col-lg-7">
+                <section class="card shadow-sm border-0 h-100">
+                    <div class="card-body p-4">
+                        <h2 class="h4 mb-4">Dados do equipamento</h2>
+                        <dl class="row mb-0">
+                            <dt class="col-sm-4">ID</dt>
+                            <dd class="col-sm-8" th:text="${equipamento.id}">1</dd>
+                            <dt class="col-sm-4">Codigo unico</dt>
+                            <dd class="col-sm-8"><span class="qr-code-label" th:text="${equipamento.codigoUnico}">uuid</span></dd>
+                            <dt class="col-sm-4">Categoria</dt>
+                            <dd class="col-sm-8" th:text="${equipamento.categoria}">Portatil</dd>
+                            <dt class="col-sm-4">Modelo</dt>
+                            <dd class="col-sm-8" th:text="${equipamento.modelo}">Latitude</dd>
+                            <dt class="col-sm-4">Marca</dt>
+                            <dd class="col-sm-8" th:text="${equipamento.marca}">Dell</dd>
+                            <dt class="col-sm-4">Numero de serie</dt>
+                            <dd class="col-sm-8" th:text="${equipamento.numeroSerie} ?: '-'">1001</dd>
+                            <dt class="col-sm-4">Local</dt>
+                            <dd class="col-sm-8" th:text="${equipamento.local}">Sala TIC</dd>
+                            <dt class="col-sm-4">Data de compra</dt>
+                            <dd class="col-sm-8" th:text="${equipamento.dataCompra} ?: '-'">2026-03-11</dd>
+                            <dt class="col-sm-4">Garantia</dt>
+                            <dd class="col-sm-8" th:text="${equipamento.garantia} ? 'Sim' : 'Nao'">Sim</dd>
+                            <dt class="col-sm-4">Seguro</dt>
+                            <dd class="col-sm-8" th:text="${equipamento.seguro} ? 'Sim' : 'Nao'">Nao</dd>
+                        </dl>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-5">
+                <section class="card shadow-sm border-0 mb-4">
+                    <div class="card-body p-4">
+                        <h2 class="h4 mb-3">QR Code</h2>
+                        <div class="qr-wrapper"
+                             id="qrCodeContainer"
+                             th:attr="data-qr-code=${equipamento.codigoUnico}">
+                        </div>
+                        <p class="text-secondary small mt-3 mb-0">
+                            O QR guarda apenas o codigo unico do equipamento, para poder ser impresso e lido em qualquer ambiente.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="card shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h2 class="h4 mb-3">Imagem</h2>
+                        <img th:if="${equipamento.imagemPath != null}" class="equipamento-detail-image"
+                             th:src="@{'/uploads/' + ${equipamento.imagemPath}}" alt="Imagem do equipamento">
+                        <p th:if="${equipamento.imagemPath == null}" class="text-secondary mb-0">
+                            Este equipamento ainda nao tem imagem associada.
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <div th:replace="fragments/scripts :: scripts(${pageScript})"></div>
+</body>
+</html>

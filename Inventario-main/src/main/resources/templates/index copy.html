@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <title th:text="${titulo}">Index</title>
+</head>
+<body>
+
+    <h1 th:text="${titulo}"></h1>
+    <p th:text="${cenas}"></p>
+
+    <h2>Lista de Equipamentos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Modelo</th>
+                <th>Marca</th>
+                <th>Local</th>
+                <th>Garantia</th>
+                <th>Seguro</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="equipamento : ${equipamentos}">
+                <td th:text="${equipamento.modelo}"></td>
+                <td th:text="${equipamento.marca}"></td>
+                <td th:text="${equipamento.local}"></td>
+                <td><input type="checkbox" th:checked="${equipamento.garantia}" disabled /></td>
+                <td><input type="checkbox" th:checked="${equipamento.seguro}" disabled /></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Lista de Fornecedores</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Morada</th>
+                <th>Localidade</th>
+                <th>Email</th>
+                <th>Telemovel</th>
+                <th>Site</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="fornecedor : ${fornecedores}">
+                <td th:text="${fornecedor.nome}"></td>
+                <td th:text="${fornecedor.morada}"></td>
+                <td th:text="${fornecedor.localidade}"></td>
+                <td th:text="${fornecedor.email}"></td>
+                <td th:text="${fornecedor.telemovel}"></td>
+                <td th:text="${fornecedor.site}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Lista de Utilizadores</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Palavra Passe</th>
+                <th>Data de Nascimento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="Utilizador : ${Utilizadores}">
+                <td th:text="${Utilizador.name}"></td>
+                <td th:text="${Utilizador.email}"></td>
+                <td th:text="${Utilizador.password}"></td>
+                <td th:text="${Utilizador.dNascimento}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Lista de Artigos Técnicos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Socket</th>
+                <th>Consumo</th>
+                <th>RAM Slots</th>
+                <th>Win 11</th>
+                <th>Bluetooth</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="artigo : ${artigos}">
+                <td th:text="${artigo.socketProcessador}"></td>
+                <td th:text="${artigo.consumoWatts} + ' W'"></td>
+                <td th:text="${artigo.slotsRamTotal}"></td>
+                <td>
+                    <input type="checkbox" th:checked="${artigo.suporteWindows11}" disabled />
+                </td>
+                <td th:text="${artigo.versaoBluetooth}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

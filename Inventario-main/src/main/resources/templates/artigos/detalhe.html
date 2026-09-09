@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head(${titulo})"></head>
+<body>
+    <nav th:replace="fragments/navbar :: navbar('artigos')"></nav>
+
+    <main class="container py-4" data-page="artigos-detalhe">
+        <section class="app-hero mb-4">
+            <div class="app-hero-copy">
+                <span class="badge text-bg-light mb-3">Ficha Técnica</span>
+                <h1 class="display-6 mb-2" th:text="'Artigo #' + ${artigo.id}">Detalhe</h1>
+            </div>
+            <div class="app-hero-actions">
+                <button type="button" class="btn btn-outline-light btn-lg" onclick="window.print()">Imprimir QR</button>
+                <a class="btn btn-primary btn-lg" th:href="@{/artigos/{id}/editar(id=${artigo.id})}">Editar</a>
+            </div>
+        </section>
+
+        <div class="row g-4">
+            <div class="col-lg-7">
+                <section class="card shadow-sm border-0 h-100">
+                    <div class="card-body p-4">
+                        <h2 class="h4 mb-4">Especificações</h2>
+                        <dl class="row mb-0">
+                            <dt class="col-sm-4 text-secondary">BIOS</dt>
+                            <hr class="my-2 opacity-5">
+                            <dt class="col-sm-4 text-secondary">Socket</dt>
+                            <dd class="col-sm-8" th:text="${artigo.socketProcessador}">-</dd>
+                            <hr class="my-2 opacity-5">
+                            <dt class="col-sm-4 text-secondary">Watts</dt>
+                            <dd class="col-sm-8" th:text="${artigo.consumoWatts} + ' W'">-</dd>
+                        </dl>
+                    </div>
+                </section>
+            </div>
+            
+            <div class="col-lg-5">
+                <section class="card shadow-sm border-0 mb-4">
+                    <div class="card-body p-4 text-center">
+                        <h2 class="h4 mb-3 text-start">QR Code</h2>
+                        <div id="qrCodeContainer" class="d-inline-block p-3 bg-white border" th:attr="data-qr-code=${artigo.codigoUnico}"></div>
+                        <p class="text-secondary small mt-3">Código Único: <span th:text="${artigo.codigoUnico}">-</span></p>
+                    </div>
+                </section>
+
+                <section class="card shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h2 class="h4 mb-3">Imagem</h2>
+                        <img th:if="${artigo.imagemPath != null}" class="img-fluid rounded" th:src="@{'/uploads/' + ${artigo.imagemPath}}">
+                        <p th:if="${artigo.imagemPath == null}" class="text-secondary mb-0">Sem imagem.</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <div th:replace="fragments/scripts :: scripts(${pageScript})"></div>
+</body>
+</html>
